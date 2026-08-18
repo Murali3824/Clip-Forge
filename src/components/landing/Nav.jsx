@@ -29,7 +29,7 @@ export default function Nav() {
               <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
             </svg>
           </div>
-          <span className="font-heading font-semibold tracking-tight text-zinc-950 text-[25px]">
+          <span className="font-heading font-semibold tracking-tight text-zinc-950 text-[20px]">
             ClipForge
           </span>
         </a>
