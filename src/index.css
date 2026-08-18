@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Inter:wght@100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --font-heading:
+        "Geist", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+        sans-serif;
+    --font-body:
+        "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+        sans-serif;
+    --font-mono: "Geist Mono", "SF Mono", Menlo, monospace;
+
+    --accent: #2e5bff;
+    --accent-hover: #1d4ed8;
+    --bg: #ffffff;
+    --fg: #09090b;
+    --muted: #71717a;
+    --border: #e4e4e7;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    overflow-x: clip;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+::selection {
+    background: rgba(46, 91, 255, 0.15);
+    color: #09090b;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+    overflow: clip;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.03em;
+    color: #09090b;
+    font-weight: 600;
+}
+
+.font-heading {
+    font-family: var(--font-heading);
+}
+.font-body {
+    font-family: var(--font-body);
+}
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+.grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size: 220px 220px;
+}
+
+.mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.dot-grid {
+    background-image: radial-gradient(rgba(9, 9, 11, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+.hairline-b {
+    border-bottom: 1px solid rgba(9, 9, 11, 0.06);
+}
+.hairline-t {
+    border-top: 1px solid rgba(9, 9, 11, 0.06);
+}
+
+/* Magnetic buttons */
+.magnetic {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom cursor blob */
+.cursor-blob {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: rgba(46, 91, 255, 0.2);
+    border: 1px solid rgba(46, 91, 255, 0.35);
+    pointer-events: none;
+    z-index: 90;
+    mix-blend-mode: multiply;
+    transform: translate(-50%, -50%);
+    transition:
+        width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+        height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.25s ease;
+}
+
+/* Mockup window frame */
+.mac-window {
+    background: #fdfdfd;
+    border: 1px solid rgba(9, 9, 11, 0.08);
+    border-radius: 20px;
+    box-shadow:
+        0 40px 80px -20px rgba(9, 9, 11, 0.18),
+        0 12px 24px -8px rgba(9, 9, 11, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+}
+
+.mac-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(9, 9, 11, 0.06);
+    background: linear-gradient(180deg, #fbfbfd 0%, #f6f7fa 100%);
+}
+.mac-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: #e4e4e7;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+.mac-dot.red {
+    background: #ff5f57;
+}
+.mac-dot.yellow {
+    background: #febc2e;
+}
+.mac-dot.green {
+    background: #28c840;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(9, 9, 11, 0.06);
+}
+
+/* Waveform bars */
+@keyframes wave {
+    0%,
+    100% {
+        transform: scaleY(0.35);
+    }
+    50% {
+        transform: scaleY(1);
+    }
+}
+.wave-bar {
+    animation: wave 1.4s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* Marquee */
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+.marquee {
+    animation: marquee 40s linear infinite;
+}
+
+/* Prevent horizontal overflow inside R3F canvas */
+canvas {
+    display: block;
+}
+
+/* Utility: focus ring */
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid rgba(46, 91, 255, 0.45);
+    outline-offset: 2px;
+    border-radius: 999px;
+}
+
+/* Timeline nav */
+.timeline-line {
+    background: linear-gradient(
+        to bottom,
+        rgba(9, 9, 11, 0.08) 0%,
+        rgba(9, 9, 11, 0.06) 100%
+    );
+}
