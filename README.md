@@ -111,7 +111,7 @@ The underlying system—located at [`C:\Users\mural\.gemini\antigravity\scratch\
 ClipForge uses `.env` and `.env.development` for runtime configuration:
 
 ```env
-REACT_APP_BACKEND_URL=http://localhost:3001
+REACT_APP_BACKEND_URL=http://localhost:3000
 WDS_SOCKET_PORT=443
 ENABLE_HEALTH_CHECK=false
 GENERATE_SOURCEMAP=true
