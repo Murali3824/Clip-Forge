@@ -28,13 +28,13 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 pt-12 border-t border-zinc-100">
           <div className="col-span-2 md:col-span-2">
             <a href="#top" className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-lg bg-gray-950 flex items-center justify-center flex-shrink-0">
+              <div className="w-7 h-7 rounded-full bg-gray-950 flex items-center justify-center flex-shrink-0">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polygon points="23 7 16 12 23 17 23 7" />
                   <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
                 </svg>
               </div>
-              <span className="font-heading font-semibold tracking-tight text-zinc-950 text-[15px]">
+              <span className="font-heading font-semibold tracking-tight text-zinc-950 text-[25px]">
                 ClipForge
               </span>
             </a>
