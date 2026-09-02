@@ -106,6 +106,59 @@ The underlying system—located at [`C:\Users\mural\.gemini\antigravity\scratch\
 
 ---
 
+## 📺 YouTube URL Download — Quality Guide
+
+> **Note**: If you want to download videos in **HD Quality (1080p / 2K / 4K)**, follow the 2-step setup below. Without this setup, YouTube video downloads automatically default to **360p SD quality**.
+
+### ⚡ Default Behavior (360p SD)
+Without any extra configuration, downloading videos via YouTube URLs defaults to **360p SD quality**.
+- The application and AI pipeline will still run normally and process clips without issues.
+- **Why this happens**: YouTube restricts high-definition (720p, 1080p, 2K, 4K) video streams and requires user authentication / session cookies to access HD formats.
+
+---
+
+### 🎯 How to Enable HD Quality (1080p / 2K / 4K)
+
+Follow these simple steps to enable automatic HD downloads:
+
+#### Step 1 — Install Chrome Extension
+Go to Chrome Web Store → Install **[Get cookies.txt LOCALLY](https://chromewebstore.google.com/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc)**.
+
+#### Step 2 — Export Cookies from YouTube
+1. Open Google Chrome and navigate to [youtube.com](https://www.youtube.com) (make sure you are logged into your Google/YouTube account).
+2. Click the **Get cookies.txt LOCALLY** extension icon in your Chrome toolbar.
+3. Click **Export** to download your session cookies.
+4. Save the file as exactly **`cookies.txt`** *(Warning: Ensure exact name and `.txt` extension)*.
+
+#### Step 3 — Place File in Storage Directory
+Move the downloaded `cookies.txt` file to your project's `storage/` folder:
+```
+<your-project-folder>/storage/cookies.txt
+```
+*(Do not use local user absolute paths — relative path from project root: `storage/cookies.txt`)*
+
+#### Step 4 — Restart Backend Service
+Restart your backend service. Once started, check your backend console logs to confirm:
+```
+[YouTube Service] Loaded authentication cookies from storage/cookies.txt
+```
+
+---
+
+### 🔄 Quality Comparison
+
+| Setup Mode | Resolution | Audio Bitrate | Status |
+| :--- | :---: | :---: | :--- |
+| **Default (No cookies)** | `360p` (SD) | 128 kbps | Works automatically out-of-the-box |
+| **With `storage/cookies.txt`** | `1080p` / `2K` / `4K` (Full HD) | 256+ kbps | Unlocks maximum resolution & audio clarity |
+
+---
+
+### 💡 Pro Tip
+YouTube session cookies periodically expire over time. If your YouTube downloads revert back to 360p in the future, simply re-export a fresh `cookies.txt` from Chrome and replace `storage/cookies.txt`.
+
+---
+
 ## ⚙️ Environment Variables
 
 ClipForge uses `.env` and `.env.development` for runtime configuration:

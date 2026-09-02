@@ -41,7 +41,8 @@ const SIDEBAR_NAV = [
     links: [
       { id: 'introduction', label: 'Introduction' },
       { id: 'requirements', label: 'Requirements' },
-      { id: 'installation', label: 'Installation' }
+      { id: 'installation', label: 'Installation' },
+      { id: 'youtube-quality', label: 'YouTube Quality Guide' }
     ]
   },
   {
@@ -397,6 +398,91 @@ ollama serve`}
                   </CodeBlock>
                 </li>
               </ol>
+            </section>
+
+            <hr className="docs-divider" />
+
+            <section id="youtube-quality">
+              <h2 className="docs-h2">📺 YouTube URL Download — Quality Guide</h2>
+              
+              <div className="docs-info">
+                <strong>Note:</strong> If you want to download videos in <strong>HD Quality (1080p / 2K / 4K)</strong>, follow the 2-step setup below. Without this setup, YouTube video downloads automatically default to <strong>360p SD quality</strong>.
+              </div>
+
+              <h3 className="docs-h3">⚡ Default Behavior (360p SD)</h3>
+              <p className="docs-p">
+                Without any extra configuration, downloading videos via YouTube URLs defaults to <strong>360p SD quality</strong>.
+              </p>
+              <ul className="docs-list">
+                <li>The application and AI pipeline will still run normally and process clips without issues.</li>
+                <li><strong>Why this happens:</strong> YouTube restricts high-definition (720p, 1080p, 2K, 4K) video streams and requires user authentication / session cookies to access HD formats.</li>
+              </ul>
+
+              <h3 className="docs-h3">🎯 How to Enable HD Quality (1080p / 2K / 4K)</h3>
+              <p className="docs-p">Follow these simple steps to enable automatic HD downloads:</p>
+
+              <ol className="docs-list">
+                <li>
+                  <strong>Step 1 — Install Chrome Extension:</strong><br />
+                  Go to Chrome Web Store → Install <a href="https://chromewebstore.google.com/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc" target="_blank" rel="noopener noreferrer" className="docs-header-link"><strong>Get cookies.txt LOCALLY</strong></a>.
+                </li>
+                <li>
+                  <strong>Step 2 — Export Cookies from YouTube:</strong>
+                  <ul className="docs-list">
+                    <li>Open Google Chrome and navigate to <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="docs-header-link">youtube.com</a> (make sure you are logged into your Google/YouTube account).</li>
+                    <li>Click the <strong>Get cookies.txt LOCALLY</strong> extension icon in your Chrome toolbar.</li>
+                    <li>Click <strong>Export</strong> to download your session cookies.</li>
+                    <li>Save the file as exactly <code className="docs-code-inline">cookies.txt</code> <em>(Warning: Ensure exact name and .txt extension)</em>.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Step 3 — Place File in Storage Directory:</strong><br />
+                  Move the downloaded <code className="docs-code-inline">cookies.txt</code> file to your project's <code className="docs-code-inline">storage/</code> folder:
+                  <CodeBlock language="text">
+{`<your-project-folder>/storage/cookies.txt`}
+                  </CodeBlock>
+                  <small className="text-zinc-500"><em>(Do not use local user absolute paths — relative path from project root: <code className="docs-code-inline">storage/cookies.txt</code>)</em></small>
+                </li>
+                <li>
+                  <strong>Step 4 — Restart Backend Service:</strong><br />
+                  Restart your backend service. Once started, check your backend console logs to confirm:
+                  <CodeBlock language="text">
+{`[YouTube Service] Loaded authentication cookies from storage/cookies.txt`}
+                  </CodeBlock>
+                </li>
+              </ol>
+
+              <h3 className="docs-h3">🔄 Quality Comparison</h3>
+              <div className="docs-table-wrapper">
+                <table className="docs-table">
+                  <thead>
+                    <tr>
+                      <th>Setup Mode</th>
+                      <th>Resolution</th>
+                      <th>Audio Bitrate</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Default (No cookies)</strong></td>
+                      <td><code className="docs-code-inline">360p</code> (SD)</td>
+                      <td>128 kbps</td>
+                      <td>Works automatically out-of-the-box</td>
+                    </tr>
+                    <tr>
+                      <td><strong>With <code className="docs-code-inline">storage/cookies.txt</code></strong></td>
+                      <td><code className="docs-code-inline">1080p</code> / <code className="docs-code-inline">2K</code> / <code className="docs-code-inline">4K</code> (Full HD)</td>
+                      <td>256+ kbps</td>
+                      <td>Unlocks maximum resolution & audio clarity</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="docs-tip">
+                <strong>💡 Pro Tip:</strong> YouTube session cookies periodically expire over time. If your YouTube downloads revert back to 360p in the future, simply re-export a fresh <code className="docs-code-inline">cookies.txt</code> from Chrome and replace <code className="docs-code-inline">storage/cookies.txt</code>.
+              </div>
             </section>
 
             <hr className="docs-divider" />
