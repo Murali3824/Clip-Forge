@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer
       data-testid="site-footer"
-      className="relative py-24 md:py-32 bg-white border-t border-zinc-200"
+      className="relative py-12 bg-white border-t border-zinc-200"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="mb-16">
@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 pt-12 border-t border-zinc-100">
+        {/* <div className="grid grid-cols-2 md:grid-cols-5 gap-8 pt-12 border-t border-zinc-100">
           <div className="col-span-2 md:col-span-2">
             <a href="#top" className="flex items-center gap-2 mb-4">
               <div className="w-7 h-7 rounded-full bg-gray-950 flex items-center justify-center flex-shrink-0">
@@ -83,7 +83,7 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-        </div>
+        </div> */}
 
         <div className="mt-12 pt-8 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-[11.5px] text-zinc-400">
